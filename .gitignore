@@ -1,0 +1,30 @@
+# Eclipse files/directories/settings
+.classpath
+.project
+.settings
+.metadata
+
+# IntelliJ files/directories/settings
+.idea
+*.iml
+
+# Build
+target
+
+# JRebel configuration files
+**/rebel.xml
+**/rebel-remote.xml
+
+# Backup folders for old files
+**/bak/
+*.bak
+
+dist
+test
+bower_components
+node_modules/
+coverage
+npm-debug.log
+src/npm-debug.log
+src/main/npm-debug.log
+zip
