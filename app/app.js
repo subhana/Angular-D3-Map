@@ -4,7 +4,7 @@ var sfMap = angular.module('sfMap', [
     'ui-notification',
     'ngResource',
     'ui.router',
-    'sfMap.clients',
+    'sfMap.map',
 ]);
 
 sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider, NotificationProvider) {
@@ -14,7 +14,7 @@ sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider, Notifi
         delay: false
     });
 
-    $urlRouterProvider.otherwise('/clients');
+    $urlRouterProvider.otherwise('/sf-map');
     //$httpProvider.interceptors.push('RequestInterceptor');
     //$httpProvider.interceptors.push('ResponseInterceptor');
 

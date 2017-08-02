@@ -1,8 +1,8 @@
 'use strict';
 
-firmModule.controller('ClientsController', [
+mapModule.controller('MapController', [
     '$scope', '$rootScope', 'Notification', '$timeout', 'UserService',
-    function clientsController($scope, $rootScope, $mdDialog, Notification, $timeout, UserService) {
+    function mapController($scope, $rootScope, $mdDialog, Notification, $timeout, UserService) {
 
 
         d3.json('../json/neighborhoods.json',function(data) {
