@@ -5,7 +5,7 @@ mapModule.controller('MapController', [
     function mapController($scope, $rootScope, $mdDialog, Notification, $timeout, UserService) {
 
 
-        d3.json('../json/neighborhoods.json',function(data) {
+        d3.json('../map_data/neighborhoods.json',function(data) {
 
             console.log(data);
             var width = 600, height = 600;

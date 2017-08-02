@@ -26,6 +26,7 @@ var paths = {
   index: './app/index.html',
   templates: ['app/**/*.html', '!app/index.html'],
   images: 'app/assets/images/*',
+  map_data: 'app/assets/map-data/*'
 };
 
 var prodPaths = {
@@ -143,6 +144,11 @@ gulp.task('templates',function() {
   .pipe(connect.reload());
 });
 
+gulp.task('map-data',function() {
+  return gulp.src(paths.map_data)
+  .pipe(gulp.dest('dist/map_data'));
+});
+
 // Copy all static images
 gulp.task('images', function() {
   return gulp.src(paths.images)
@@ -193,6 +199,6 @@ gulp.task('zip', ['index', 'templates', 'inject-js', 'inject-css', 'images'], ()
     .pipe(gulp.dest('dist'));
 });*/
 
-gulp.task('default', ['watch', 'index', 'templates', 'images', 'inject-css', 'inject-js-debug', 'server']);
+gulp.task('default', ['watch', 'index', 'templates', 'images', 'map-data', 'inject-css', 'inject-js-debug', 'server']);
 gulp.task('deploy', ['index', 'templates', 'inject-js', 'inject-css', 'images', 'zip']);
 //gulp.task('prod-deploy', ['deploy', 'replace-urls']);
