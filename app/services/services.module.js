@@ -1,1 +1,1 @@
-var serviceModule = angular.module('Adp.services', []);
+var serviceModule = angular.module('sfMap.services', []);

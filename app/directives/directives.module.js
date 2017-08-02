@@ -1,1 +1,1 @@
-var directivesModule = angular.module('Adp.directives', []);
+var directivesModule = angular.module('sfMap.directives', []);
