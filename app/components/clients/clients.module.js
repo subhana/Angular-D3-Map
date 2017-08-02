@@ -1,6 +1,6 @@
 'use strict';
 
-var firmModule = angular.module('Adp.clients', ['Adp.directives']) //jshint ignore: line
+var firmModule = angular.module('sfMap.clients', ['sfMap.directives']) //jshint ignore: line
     .config(function ($stateProvider) {
         $stateProvider.state('clients', {
             url: '/clients',

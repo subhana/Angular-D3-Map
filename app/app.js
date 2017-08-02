@@ -1,13 +1,13 @@
 'use strict';
-var portal = angular.module('Adp', [
-    'Adp.services',
+var sfMap = angular.module('sfMap', [
+    'sfMap.services',
     'ui-notification',
     'ngResource',
     'ui.router',
-    'Adp.clients',
+    'sfMap.clients',
 ]);
 
-portal.config(function ($stateProvider, $urlRouterProvider, $httpProvider, NotificationProvider) {
+sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider, NotificationProvider) {
     NotificationProvider.setOptions({
         startTop: 100,
         maxCount: 3,
@@ -21,7 +21,7 @@ portal.config(function ($stateProvider, $urlRouterProvider, $httpProvider, Notif
 
 });
 
-portal.run(['$rootScope', '$state', '$location', '$http',
+sfMap.run(['$rootScope', '$state', '$location', '$http',
     function ($rootScope, $state, $location, $http) {
         //SecurityService.setAuthToken();
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) { //jshint ignore: line
