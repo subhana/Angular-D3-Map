@@ -21,17 +21,17 @@ const zip = require('gulp-zip');
 const modRewrite = require('connect-modrewrite');
 
 var paths = {
-  scripts: ['app/app.js','app/**/*.module.js', 'app/**/*.js','!app/**/*spec.js','!app/**/*mock.js','!app/e2e/**/*'],
-  css: ['app/**/*.css'],
-  index: './app/index.html',
-  templates: ['app/**/*.html', '!app/index.html'],
-  images: 'app/assets/images/*',
-  map_data: 'app/assets/map-data/*'
+    scripts: ['app/app.js','app/**/*.module.js', 'app/**/*.js','!app/**/*spec.js','!app/**/*mock.js','!app/e2e/**/*'],
+    css: ['app/**/*.css'],
+    index: './app/index.html',
+    templates: ['app/**/*.html', '!app/index.html'],
+    images: 'app/assets/images/*',
+    map_data: 'app/assets/map-data/*'
 };
 
 var prodPaths = {
-  scripts: ['dist/**/*.js'],
-  templates: ['dist/templates/*.html', 'dist/index.html']
+    scripts: ['dist/**/*.js'],
+    templates: ['dist/templates/*.html', 'dist/index.html']
 }
 
 // used to retrieve gulp task names while inside a gulp task
@@ -52,28 +52,28 @@ function checkForFlag(flagName, taskName) {
 }
 
 gulp.task('clean', function() {
-  return del(['zip','dist']);
+    return del(['zip','dist']);
 });
 
 gulp.task('lint', function() {
-  return gulp.src('app/**/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+    return gulp.src('app/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('scripts', function() {
-  return gulp.src(mainBowerFiles('**/*.js').concat(paths.scripts))
-    .pipe(ngAnnotate())
-    .pipe(uglify().on('error', gutil.log))
-    .pipe(concat('nexport.js'))
-    .pipe(rev())
-    .pipe(gulp.dest('dist/js'));
+    return gulp.src(mainBowerFiles('**/*.js').concat(paths.scripts))
+        .pipe(ngAnnotate())
+        .pipe(uglify().on('error', gutil.log))
+        .pipe(concat('sfmap.js'))
+        .pipe(rev())
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('libs', function() {
-  return gulp.src(mainBowerFiles('**/*.js'))
-    .pipe(concat('libs.js'))
-    .pipe(gulp.dest('dist/js/libs'));
+    return gulp.src(mainBowerFiles('**/*.js'))
+        .pipe(concat('libs.js'))
+        .pipe(gulp.dest('dist/js/libs'));
 });
 
 gulp.task('src', function() {
@@ -88,12 +88,12 @@ gulp.task('clean-js', function () {
 });
 
 gulp.task('scripts-debug', ['clean-js', 'libs', 'src'] , function() {
-  return gulp.src(['dist/js/libs/libs.js','dist/js/src/src.js'])
-    .pipe(sourcemaps.init())
-    .pipe(concat('nexport.js'))
-    .pipe(sourcemaps.write())
-    .pipe(rev())
-    .pipe(gulp.dest('dist/js'));
+    return gulp.src(['dist/js/libs/libs.js','dist/js/src/src.js'])
+        .pipe(sourcemaps.init())
+        .pipe(concat('sfmap.js'))
+        .pipe(sourcemaps.write())
+        .pipe(rev())
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('inject-js-debug', ['scripts-debug'], function () {
@@ -116,11 +116,11 @@ gulp.task('clean-css', function () {
 });
 
 gulp.task('css', ['clean-css'], function() {
-  return gulp.src(mainBowerFiles('**/*.css').concat(paths.css))
-  .pipe(concat('nexport.css'))
-  .pipe(cleanCSS())
-  .pipe(rev())
-  .pipe(gulp.dest('dist/css'));
+    return gulp.src(mainBowerFiles('**/*.css').concat(paths.css))
+        .pipe(concat('sfmap.css'))
+        .pipe(cleanCSS())
+        .pipe(rev())
+        .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('inject-css', ['css'], function () {
@@ -131,30 +131,29 @@ gulp.task('inject-css', ['css'], function () {
 });
 
 gulp.task('index', function() {
-  return gulp.src(paths.index)
-    .pipe(inject(gulp.src(['dist/js/*.js', 'dist/css/*.css'], {read: false}), {ignorePath: 'dist'}))
-    .pipe(gulp.dest('dist'))
-    .pipe(connect.reload());
+    return gulp.src(paths.index)
+        .pipe(inject(gulp.src(['dist/js/*.js', 'dist/css/*.css'], {read: false}), {ignorePath: 'dist'}))
+        .pipe(gulp.dest('dist'))
+        .pipe(connect.reload());
 });
 
 gulp.task('templates',function() {
-  return gulp.src(paths.templates)
-  .pipe(flatten())
-  .pipe(gulp.dest('dist/templates'))
-  .pipe(connect.reload());
+    return gulp.src(paths.templates)
+        .pipe(flatten())
+        .pipe(gulp.dest('dist/templates'))
+        .pipe(connect.reload());
 });
 
 gulp.task('map-data',function() {
-  return gulp.src(paths.map_data)
-  .pipe(gulp.dest('dist/map_data'));
+    return gulp.src(paths.map_data)
+        .pipe(gulp.dest('dist/map_data'));
 });
 
 // Copy all static images
 gulp.task('images', function() {
-  return gulp.src(paths.images)
-    // Pass in options to the task
-    .pipe(imagemin({optimizationLevel: 5}))
-    .pipe(gulp.dest('dist/img'));
+    return gulp.src(paths.images)
+        .pipe(imagemin({optimizationLevel: 5}))
+        .pipe(gulp.dest('dist/img'));
 });
 
 // Rerun the task when a file changes
@@ -171,19 +170,19 @@ gulp.task('watch', function() {
 //  append it to the end of http://devqa2.corp.nexient.com/gateway/
 //  [P] its a proxy request
 gulp.task('server', function() {
-  connect.server({
-    root: 'dist',
-    livereload: true,
-    port:8004,
-    middleware: function(){
-      return [
-        modRewrite([
-          '^/gateway/(.*)$ http://devqa2.corp.nexient.com/gateway/$1 [P]',
-          '^/images/(.*)$ http://devqa2.corp.nexient.com/images/$1 [P]'
-        ]),
-      ];
-    }
-  });
+    connect.server({
+        root: 'dist',
+        livereload: true,
+        port: 8004,
+        middleware: function() {
+            return [
+                modRewrite([
+                    '^/gateway/(.*)$ http://devqa2.corp.nexient.com/gateway/$1 [P]',
+                    '^/images/(.*)$ http://devqa2.corp.nexient.com/images/$1 [P]'
+                ]),
+            ];
+        }
+    });
 });
 
 gulp.task('zip', ['index', 'templates', 'inject-js', 'inject-css', 'images'], () =>
