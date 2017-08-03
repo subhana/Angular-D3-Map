@@ -5,7 +5,7 @@ mapModule.controller('MapController', [
     function mapController($scope, $rootScope, $mdDialog, Notification, $timeout, UserService) {
 
 
-        d3.json('../map_data/neighborhoods.json',function(data) {
+        /*d3.json('../map_data/neighborhoods.json',function(data) {
 
             console.log(data);
             var width = 600, height = 600;
@@ -57,7 +57,7 @@ mapModule.controller('MapController', [
             var aa = [-122.49444, 37.7609];
             var	bb = [-122.44908, 37.76623];
 
-            /*svg.selectAll("circle")
+            svg.selectAll("circle")
         		.data(places)
         		.enter()
         		.append("circle")
@@ -70,8 +70,8 @@ mapModule.controller('MapController', [
 
         		})
         		.attr("r", "4px")
-        		.attr("fill", "blue");*/
-            });
+        		.attr("fill", "blue");
+            });*/
 
     }
 ]);

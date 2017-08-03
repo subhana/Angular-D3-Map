@@ -4,6 +4,7 @@ var sfMap = angular.module('sfMap', [
     'ui-notification',
     'ngResource',
     'ui.router',
+    'sfMap.drawMap',
     'sfMap.map',
 ]);
 
