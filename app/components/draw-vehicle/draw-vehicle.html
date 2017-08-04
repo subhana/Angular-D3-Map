@@ -1,1 +1,9 @@
-<div></div>
+<div>
+    <div>Please select a route: </div>
+    <br>
+    <select name="route"
+            ng-options="route.title for route in routes track by route.tag"
+            ng-model="selectedRoute"
+            ng-change="getVehicles()"></select>
+
+</div>
