@@ -5,6 +5,7 @@ var sfMap = angular.module('sfMap', [
     'ngResource',
     'ui.router',
     'sfMap.drawMap',
+    'sfMap.drawVehicle',
     'sfMap.map',
 ]);
 

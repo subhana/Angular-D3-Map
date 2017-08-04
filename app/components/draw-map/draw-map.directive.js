@@ -6,41 +6,12 @@
                 restrict: 'E',
                 replace: true,
                 templateUrl: 'templates/draw-map.html',
-                scope: {
-                    printFn: '&',
-                    addFn: '&',
-                    align: '@'
-                },
+				scope: false,
                 link: function(scope, elm, attrs) {
+					
                     d3.json('../map_data/neighborhoods.json',function(data) {
 
-                        console.log(data);
-                        var width = 600, height = 600;
-
-                        var places = [
-                            {
-                        		"id": "1434",
-                        		"lon": "-122.49444",
-                        		"routeTag": "N",
-                        		"predictable": "true",
-                        		"speedKmHr": "29",
-                        		"dirTag": "N____I_C00",
-                        		"heading": "87",
-                        		"lat": "37.7609",
-                        		"secsSinceReport": "9"
-                        	}, {
-                        		"id": "1480",
-                        		"lon": "-122.44908",
-                        		"routeTag": "N",
-                        		"predictable": "true",
-                        		"speedKmHr": "16",
-                        		"dirTag": "N____I_C00",
-                        		"heading": "45",
-                        		"lat": "37.76623",
-                        		"secsSinceReport": "34"
-                        	}
-                        ];
-
+                    	var width = 600, height = 600;
                         var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
 
                         var projection = d3.geo.mercator().scale(1).translate([0, 0]).precision(0);
@@ -54,6 +25,8 @@
                         var transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2, (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
                         projection.scale(scale).translate(transl);
 
+						scope.projection = projection;
+						scope.svg = svg;
 
                         svg.selectAll("path").data(data.features).enter().append("path").attr("d", path).attr('data-id', function(d) {
                             return d.id;
@@ -61,24 +34,9 @@
                             return d.properties.name;
                         }).style("fill", "#FB5B1F").style("stroke", "#ffffff");
 
-                        var aa = [-122.49444, 37.7609];
-                        var	bb = [-122.44908, 37.76623];
+						scope.$apply();
 
-                        /*svg.selectAll("circle")
-                    		.data(places)
-                    		.enter()
-                    		.append("circle")
-                    		.attr("cx", function (d) {
-                    		    console.log(d); return projection([d.lon, d.lat])[0];
-
-                    		})
-                    		.attr("cy", function (d) {
-                    		    return projection([d.lon, d.lat])[1];
-
-                    		})
-                    		.attr("r", "4px")
-                    		.attr("fill", "blue");*/
-                        });
+                    });
                 }
 			}
 		});
