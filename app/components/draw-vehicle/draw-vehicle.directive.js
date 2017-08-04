@@ -7,6 +7,7 @@
                 replace: true,
                 templateUrl: 'templates/draw-vehicle.html',
                 scope: false,
+				controller: 'DrawVehicleController as vehicleCtrl',
                 link: function(scope, elm, attrs) {
 
                     var places = [
