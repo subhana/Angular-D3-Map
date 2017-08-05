@@ -21,16 +21,16 @@ drawVehicleModule.controller('DrawVehicleController', [
         };
 
         $scope.drawVehicleLocations = function() {
-            circles = $scope.svg.selectAll("circle").data($scope.vehicles);
+            circles = $scope.svg.selectAll('circle').data($scope.vehicles);
 
-            circles.enter().append("circle");
+            circles.enter().append('circle');
             circles.exit().remove();
 
             circles
-            .attr("r", "3px")
-            .attr("cx", function(d) { return $scope.projection([d.lon, d.lat])[0]; })
-            .attr("cy", function(d) { return $scope.projection([d.lon, d.lat])[1]; })
-            .attr("fill", "#454545");
+            .attr('r', '3px')
+            .attr('cx', function(d) { return $scope.projection([d.lon, d.lat])[0]; })
+            .attr('cy', function(d) { return $scope.projection([d.lon, d.lat])[1]; })
+            .attr('fill', '#454545');
         };
 
         $interval(function() {
