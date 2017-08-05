@@ -14,8 +14,11 @@ drawVehicleModule.controller('DrawVehicleController', [
             console.log("selected route");
             console.log($scope.selectedRoute);
             VehicleService.get($scope.selectedRoute.tag).then(function(data) {
-                $scope.vehicles = data.vehicle;
-                $scope.drawVehicleLocations();
+
+                if(data.vehicle) {
+                    $scope.vehicles = data.vehicle;
+                    $scope.drawVehicleLocations();
+                }
             });
         };
 
