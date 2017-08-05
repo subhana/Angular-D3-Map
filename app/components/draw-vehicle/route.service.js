@@ -3,7 +3,7 @@
 
 	drawVehicleModule.service('RouteService', function($resource) {
 
-		var routeResource = $resource('http://webservices.nextbus.com/service/publicJSONFeed?command=routeList&a=sf-muni',
+		var routeResource = $resource('http://webservices.nextbus.com/service/publicJSONFeed',
             {
     			command: 'routeList',
                 a: 'sf-muni'
