@@ -18,6 +18,7 @@ drawVehicleModule.controller('DrawVehicleController', [
             VehicleService.get($scope.selectedRoute.tag).then(function(data) {
 
                 $scope.vehicles = data.vehicle ? data.vehicle : [];
+                $scope.noVehicle = data.vehicle ? false : true;
                 $scope.drawVehicleLocations();
             });
         };

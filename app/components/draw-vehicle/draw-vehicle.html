@@ -1,9 +1,12 @@
 <div>
     <div>Please select a route: </div>
+
     <br>
     <select name="route"
             ng-options="route.title for route in routes track by route.tag"
             ng-model="selectedRoute"
             ng-change="updateVehicleLocations()"></select>
+
+    <div ng-if="noVehicle" class="no-vehicle">There is currently no vehicle in this route</div>
 
 </div>

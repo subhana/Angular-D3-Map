@@ -1,3 +1,7 @@
 body {
     background-color: #C6E2FF;
 }
+
+.no-vehicle {
+    color: red;
+}
