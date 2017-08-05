@@ -64,7 +64,7 @@ gulp.task('clean-js', function () {
 gulp.task('scripts-debug', ['clean-js', 'libs', 'src'] , function() {
     return gulp.src(['dist/js/libs/libs.js','dist/js/src/src.js'])
         .pipe(sourcemaps.init())
-        .pipe(concat('sfmap.js'))
+        .pipe(concat('sfmuni.js'))
         .pipe(sourcemaps.write())
         .pipe(rev())
         .pipe(gulp.dest('dist/js'));
@@ -94,7 +94,7 @@ gulp.task('clean-css', function () {
 // Prepare revisioned, single js file
 gulp.task('css', ['clean-css'], function() {
     return gulp.src(mainBowerFiles('**/*.css').concat(paths.css))
-        .pipe(concat('sfmap.css'))
+        .pipe(concat('sfmuni.css'))
         .pipe(cleanCSS())
         .pipe(rev())
         .pipe(gulp.dest('dist/css'));
@@ -161,5 +161,5 @@ gulp.task('zip', ['index', 'templates', 'inject-js', 'inject-css', 'images'], ()
         .pipe(gulp.dest('zip'))
 );
 
-gulp.task('default', ['watch', 'index', 'templates', 'images', 'map-data', 'inject-css', 'inject-js-debug', 'server']);
+gulp.task('default', ['watch', 'index', 'templates', 'map-data', 'inject-css', 'inject-js-debug', 'server']);
 gulp.task('deploy', ['index', 'templates', 'map-data', 'inject-js', 'inject-css', 'images', 'zip']);
