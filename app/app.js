@@ -1,7 +1,5 @@
 'use strict';
 var sfMap = angular.module('sfMap', [
-    'sfMap.services',
-    'ui-notification',
     'ngResource',
     'ui.router',
     'sfMap.drawMap',
@@ -9,12 +7,7 @@ var sfMap = angular.module('sfMap', [
     'sfMap.map',
 ]);
 
-sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider, NotificationProvider) {
-    NotificationProvider.setOptions({
-        startTop: 100,
-        maxCount: 3,
-        delay: false
-    });
+sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $urlRouterProvider.otherwise('/sf-map');
 });
