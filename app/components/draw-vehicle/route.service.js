@@ -7,23 +7,10 @@
             {
     			command: 'routeList',
                 a: 'sf-muni'
-    		},
-            {
-                validateBulkDealNumberRange: {
-					method: 'GET',
-					isArray: false,
-					url: '/api/deals/valid/bulkRange/:costCenterId/:numberOfDeals'
-				},
-				arc: {
-					method: 'GET',
-					isArray: false,
-					url: '/api/deals/arcSearch'
-				}
-			});
+    		});
 
             this.get = function() {
 				return routeResource.get().$promise;
 			};
-
 		});
 })();
