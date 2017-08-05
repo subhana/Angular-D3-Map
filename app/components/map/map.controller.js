@@ -1,9 +1,8 @@
 'use strict';
 
 mapModule.controller('MapController', [
-    '$scope', '$rootScope', 'Notification', '$timeout', 'UserService',
-    function mapController($scope, $rootScope, $mdDialog, Notification, $timeout, UserService) {
-
+    '$scope', '$rootScope', '$timeout',
+    function mapController($scope, $rootScope, $timeout) {
 
     }
 ]);
