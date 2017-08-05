@@ -1,8 +1,8 @@
 'use strict';
 
 drawVehicleModule.controller('DrawVehicleController', [
-    '$scope', '$timeout', 'RouteService','VehicleService',
-    function drawVehicleController($scope, $timeout, RouteService, VehicleService) {
+    '$scope', '$interval', 'RouteService','VehicleService',
+    function drawVehicleController($scope, $interval, RouteService, VehicleService) {
 
         RouteService.get().then(function(routes) {
             $scope.routes = routes.route;
@@ -16,5 +16,9 @@ drawVehicleModule.controller('DrawVehicleController', [
                 console.log(vehicles);
             });
         };
+
+        /*$interval(function() {
+            $scope.getVehicles();
+        }, 15000);*/
     }
 ]);

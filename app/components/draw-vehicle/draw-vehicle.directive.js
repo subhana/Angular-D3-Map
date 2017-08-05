@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-		drawMapModule.directive('sfDrawVehicle', function () {
+		drawMapModule.directive('sfDrawVehicle', function ($timeout) {
 			return {
                 restrict: 'E',
                 replace: true,
@@ -50,7 +50,26 @@
                         .attr("r", "4px")
                         .attr("fill", "blue");
 
-                }
+						/*$timeout(function() {
+							console.log("there");
+							scope.svg.selectAll("circle")
+		                        .data(places)
+		                        .enter()
+		                        .append("circle")
+		                        .attr("cx", function (d) {
+		                            //console.log(d);
+		                            return scope.projection([d.lon, d.lat])[0];
+
+		                        })
+		                        .attr("cy", function (d) {
+		                            return scope.projection([d.lon, d.lat])[1];
+
+		                        })
+		                        .attr("r", "4px")
+		                        .attr("fill", "red");
+				        }, 500);*/
+
+                } // end of link function
 			}
 		});
 })();
