@@ -15,10 +15,8 @@ drawVehicleModule.controller('DrawVehicleController', [
             console.log($scope.selectedRoute);
             VehicleService.get($scope.selectedRoute.tag).then(function(data) {
 
-                if(data.vehicle) {
-                    $scope.vehicles = data.vehicle;
-                    $scope.drawVehicleLocations();
-                }
+                $scope.vehicles = data.vehicle ? data.vehicle : [];
+                $scope.drawVehicleLocations();
             });
         };
 
@@ -41,33 +39,5 @@ drawVehicleModule.controller('DrawVehicleController', [
                 $scope.updateVehicleLocations();
             }
         }, 15000)
-
-
-
-
-            /*var circles = scope.svg.selectAll("circle").data(places1);
-            circles.exit().remove();
-            circles.enter().append("circle")
-                .attr("r", "3px")
-                .attr("cx", function(d) { return scope.projection([d.lon, d.lat])[0]; })
-                .attr("cy", function(d) { return scope.projection([d.lon, d.lat])[1]; })
-                .attr("fill", "blue");
-
-            $timeout(function() {
-                var circles = scope.svg.selectAll("circle").data(places2);
-
-                circles.enter().append("circle");
-                circles.exit().remove();
-
-                circles
-                .attr("r", "3px")
-                .attr("cx", function(d) { return scope.projection([d.lon, d.lat])[0]; })
-                .attr("cy", function(d) { return scope.projection([d.lon, d.lat])[1]; })
-                .attr("fill", "red");
-            }, 2000);*/
-
-        /*$interval(function() {
-            $scope.getVehicles();
-        }, 15000);*/
     }
 ]);
