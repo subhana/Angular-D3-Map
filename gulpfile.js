@@ -21,7 +21,6 @@ var paths = {
     css: ['app/**/*.css'],
     index: './app/index.html',
     templates: ['app/**/*.html', '!app/index.html'],
-    //images: 'app/assets/images/*',
     map_data: 'app/assets/map-data/*'
 };
 
@@ -129,13 +128,6 @@ gulp.task('map-data',function() {
     return gulp.src(paths.map_data)
         .pipe(gulp.dest('dist/map_data'));
 });
-
-// Copy all static images
-/*gulp.task('images', function() {
-    return gulp.src(paths.images)
-        .pipe(imagemin({optimizationLevel: 5}))
-        .pipe(gulp.dest('dist/img'));
-});*/
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
