@@ -13,6 +13,8 @@ drawVehicleModule.controller('DrawVehicleController', [
         $scope.updateVehicleLocations = function() {
             console.log("selected route");
             console.log($scope.selectedRoute);
+
+            if(!$scope.selectedRoute) return;
             VehicleService.get($scope.selectedRoute.tag).then(function(data) {
 
                 $scope.vehicles = data.vehicle ? data.vehicle : [];
@@ -35,11 +37,10 @@ drawVehicleModule.controller('DrawVehicleController', [
             .attr('fill-opacity', 0.5);
         };
 
-        $interval(function() {
-            console.log("inside timeout");
-            if($scope.selectedRoute) {
-                $scope.updateVehicleLocations();
-            }
-        }, 15000)
+        var updateVehicleLoc = $interval($scope.updateVehicleLocations, 15000);
+
+        $scope.$on('$destroy', function() {
+            $interval.cancel(updateVehicleLoc);
+        });
     }
 ]);
