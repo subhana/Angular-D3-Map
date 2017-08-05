@@ -17,16 +17,4 @@ sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider, Notifi
     });
 
     $urlRouterProvider.otherwise('/sf-map');
-    //$httpProvider.interceptors.push('RequestInterceptor');
-    //$httpProvider.interceptors.push('ResponseInterceptor');
-
-
 });
-
-sfMap.run(['$rootScope', '$state', '$location', '$http',
-    function ($rootScope, $state, $location, $http) {
-        //SecurityService.setAuthToken();
-        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) { //jshint ignore: line
-
-        });
-    }]);
