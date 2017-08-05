@@ -18,6 +18,7 @@ drawMapModule.controller('DrawMapController', [
             yScale = height / Math.abs(bounds[1][1] - bounds[0][1]);
             scale = xScale < yScale ? xScale : yScale;
 
+
             transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2, (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
         };
 
@@ -38,8 +39,8 @@ drawMapModule.controller('DrawMapController', [
             $scope.projection = projection;
             $scope.svg = svg;
 
-            this.drawMap(svg, path, neighborhoods, '#FB5B1F', '#ffffff');
-            this.drawMap(svg, path, freeways, '#FB5B1F', '#ffffff');
+            this.drawMap(svg, path, neighborhoods, '#EBEBEB', '#C9C9C9');
+            this.drawMap(svg, path, freeways, 'none', '#CD853F');
 
             $scope.$apply();
         };
