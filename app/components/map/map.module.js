@@ -1,6 +1,6 @@
 'use strict';
 
-var mapModule = angular.module('sfMap.map', []) //jshint ignore: line
+var mapModule = angular.module('sfMap.map', [])
     .config(function ($stateProvider) {
         $stateProvider.state('sfmap', {
             url: '/sf-map',
