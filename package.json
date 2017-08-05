@@ -1,6 +1,6 @@
 {
-  "name": "ADP",
-  "description": "Request a Referral",
+  "name": "San Francisco Muni",
+  "description": "Display the real-time positions of San Francisco's buses and trains",
   "scripts": {
     "start": "npm install && bower install --allow-root",
     "dev": "gulp",
