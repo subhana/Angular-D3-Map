@@ -1,1 +1,1 @@
-var drawMapModule = angular.module('sfMap.drawMap', []);
+var drawMapModule = angular.module('sfMuni.drawMap', []);

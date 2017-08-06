@@ -1,1 +1,1 @@
-var drawVehicleModule = angular.module('sfMap.drawVehicle', []);
+var drawVehicleModule = angular.module('sfMuni.drawVehicle', []);
