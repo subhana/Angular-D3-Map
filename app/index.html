@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>San Francisco Map</title>
+        <title>San Francisco Municipal Transportation Map</title>
 
         <!-- inject:css -->
         <!-- endinject -->
@@ -16,6 +16,9 @@
     </head>
 
     <body>
+        <div class="header">
+            <h3>San Francisco Municipal Transportation</h3>
+        </div>
         <sf-draw-map></sf-draw-map>
 
         <sf-draw-vehicle ng-if="projection"></sf-draw-vehicle>

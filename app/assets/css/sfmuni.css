@@ -2,6 +2,12 @@ body {
     background-color: #C6E2FF;
 }
 
+.header {
+    width: 30%;
+    margin: 0 auto;
+    color: #2e6da4;
+}
+
 svg {
     display: block;
     margin: 0 auto;
