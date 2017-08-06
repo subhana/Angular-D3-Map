@@ -1,1 +1,4 @@
-var drawMapModule = angular.module('sfMuni.drawMap', []);
+(function() {
+    'use strict';
+    angular.module('sfMuni.drawMap', []);
+})();
