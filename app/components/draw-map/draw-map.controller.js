@@ -7,7 +7,7 @@ drawMapModule.controller('DrawMapController', [
 
         this.setProjectionParams = function(data) {
 
-            width = 600; height = 600;
+            width = 700; height = 600;
             svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
 
             projection = d3.geo.mercator().scale(1).translate([0, 0]).precision(0);
@@ -44,6 +44,41 @@ drawMapModule.controller('DrawMapController', [
             this.drawMap(svg, path, freeways, 'freeway');
 
             $scope.$apply();
+
+            this.createLegend();
+        };
+
+
+        this.createLegend = function() {
+
+            var legendData = [
+                {
+                    x: width - 600,
+                    y: 50,
+                    text: 'Neighborhood'
+                },
+                {
+                    x: width - 600,
+                    y: 90,
+                    text: 'Freeway'
+                }
+            ];
+            var g = svg.selectAll('g')
+                      .data(legendData)
+                      .enter()
+                      .append("g")
+                      .attr("class","someClass")
+                      .attr("transform", function(d) {
+                          return "translate(" + d.x + "," + d.y + ")";
+                      });
+            g.append("rect")
+                .attr("width", 45)
+                .attr("height", 12)
+                .style("fill", "red");
+
+            g.append("text")
+                .style("fill", "black")
+                .text(function(d) {return d.text;});
         };
 
         queue()
