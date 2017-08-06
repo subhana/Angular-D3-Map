@@ -22,13 +22,13 @@ drawMapModule.controller('DrawMapController', [
             transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2, (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
         };
 
-        this.drawMap = function(svg, path, data, fillColor, strokeColor) {
+        this.drawMap = function(svg, path, data, cssClass) {
 
             svg.selectAll('path').data(data.features).enter().append('path').attr('d', path).attr('data-id', function(d) {
                 return d.id;
             }).attr('data-name', function(d) {
                 return d.properties.name;
-            }).style('fill', fillColor).style('stroke', strokeColor);
+            }).attr('class', cssClass);
         };
 
         this.ready = function(error, neighborhoods, freeways) {
@@ -39,8 +39,8 @@ drawMapModule.controller('DrawMapController', [
             $scope.projection = projection;
             $scope.svg = svg;
 
-            this.drawMap(svg, path, neighborhoods, '#EBEBEB', '#C9C9C9');
-            this.drawMap(svg, path, freeways, 'none', '#CD853F');
+            this.drawMap(svg, path, neighborhoods, 'neighborhood');
+            this.drawMap(svg, path, freeways, 'freeway');
 
             $scope.$apply();
         };
