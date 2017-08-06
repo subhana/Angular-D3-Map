@@ -1,17 +1,21 @@
 'use strict';
-var sfMap = angular.module('sfMap', [
+var sfMuni = angular.module('sfMuni', [
 
     // 3rd party dependencies
     'ngResource',
     'ui.router',
 
     // App submodules
-    'sfMap.drawMap',
-    'sfMap.drawVehicle',
-    'sfMap.map',
+    'sfMuni.drawMap',
+    'sfMuni.drawVehicle'
 ]);
 
-sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+sfMuni.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $urlRouterProvider.otherwise('/sf-map');
+    $stateProvider.state('sfmuni', {
+        url: '/sfmuni',
+        templateUrl: 'index.html',
+
+    });
+    $urlRouterProvider.otherwise('/sfmuni');
 });

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="sfMap">
+<html ng-app="sfMuni">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>San Francisco Map</title>
-
 
         <!-- inject:css -->
         <!-- endinject -->
@@ -17,7 +16,8 @@
     </head>
 
     <body>
-        <!-- AngularJS View Resolver -->
-        <div id="sfmap" ui-view></div>
+        <sf-draw-map></sf-draw-map>
+
+        <sf-draw-vehicle ng-if="projection"></sf-draw-vehicle>
     </body>
 </html>
