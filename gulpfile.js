@@ -13,12 +13,13 @@ var replace = require('gulp-replace');
 var rev = require('gulp-rev');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
+var sass = require('gulp-sass');
 
 const zip = require('gulp-zip');
 
 var paths = {
     scripts: ['app/app.js','app/**/*.module.js', 'app/**/*.js'],
-    css: ['app/**/*.css'],
+    scss: ['app/**/*.scss'],
     index: './app/index.html',
     templates: ['app/**/*.html', '!app/index.html'],
     map_data: 'app/assets/map-data/*'
@@ -28,6 +29,17 @@ var prodPaths = {
     scripts: ['dist/**/*.js'],
     templates: ['dist/templates/*.html', 'dist/index.html']
 }
+
+gulp.task('css', ['clean-css'], function() {
+    return gulp.src(paths.scss)
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(concat('sfmuni.css'))
+        .pipe(cleanCSS())
+        .pipe(sourcemaps.write())
+        .pipe(rev())
+        .pipe(gulp.dest('dist/css'));
+});
 
 gulp.task('clean', function() {
     return del(['zip','dist']);
@@ -88,15 +100,6 @@ gulp.task('inject-js', ['scripts'], function () {
 gulp.task('clean-css', function () {
     cleanCssFiles = ['dist/css/*.css'];
     return del(cleanCssFiles);
-});
-
-// Prepare revisioned, single js file
-gulp.task('css', ['clean-css'], function() {
-    return gulp.src(mainBowerFiles('**/*.css').concat(paths.css))
-        .pipe(concat('sfmuni.css'))
-        .pipe(cleanCSS())
-        .pipe(rev())
-        .pipe(gulp.dest('dist/css'));
 });
 
 // Inject css and js files into index.html when css changes
