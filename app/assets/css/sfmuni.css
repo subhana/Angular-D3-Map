@@ -2,6 +2,22 @@ body {
     background-color: #C6E2FF;
 }
 
+.neighborhood {
+    fill: #EBEBEB;
+    stroke: #C9C9C9;
+}
+
+.freeway {
+    fill: 'none';
+    stroke: #CD853F;
+}
+
+.vehicle {
+    fill: red;
+    stroke: #545454;
+    fill-opacity: 0.5;
+}
+
 .no-vehicle {
     color: red;
 }

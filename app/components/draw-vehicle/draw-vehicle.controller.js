@@ -33,9 +33,7 @@ drawVehicleModule.controller('DrawVehicleController', [
             .attr('r', '3px')
             .attr('cx', function(d) { return $scope.projection([d.lon, d.lat])[0]; })
             .attr('cy', function(d) { return $scope.projection([d.lon, d.lat])[1]; })
-            .attr('fill', 'red')
-            .attr('stroke', '#545454')
-            .attr('fill-opacity', 0.5);
+            .attr('class', 'vehicle');
         };
 
         var updateVehicleLoc = $interval($scope.updateVehicleLocations, 15000);
