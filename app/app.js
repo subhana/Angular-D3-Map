@@ -7,11 +7,15 @@ var sfMap = angular.module('sfMap', [
 
     // App submodules
     'sfMap.drawMap',
-    'sfMap.drawVehicle',
-    'sfMap.map',
+    'sfMap.drawVehicle'
 ]);
 
 sfMap.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $urlRouterProvider.otherwise('/sf-map');
+    $stateProvider.state('sfmuni', {
+        url: '/sfmuni',
+        templateUrl: 'index.html',
+
+    });
+    $urlRouterProvider.otherwise('/sfmuni');
 });
