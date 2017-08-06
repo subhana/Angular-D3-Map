@@ -1,1 +1,4 @@
-var drawVehicleModule = angular.module('sfMuni.drawVehicle', []);
+(function() {
+    'use strict';
+    angular.module('sfMuni.drawVehicle', []);
+})();

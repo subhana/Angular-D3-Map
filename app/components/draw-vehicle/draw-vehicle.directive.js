@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-		drawMapModule.directive('sfDrawVehicle', function ($timeout) {
+		angular.module('sfMuni.drawVehicle').directive('sfDrawVehicle', function ($timeout) {
 			return {
                 restrict: 'E',
                 replace: true,
