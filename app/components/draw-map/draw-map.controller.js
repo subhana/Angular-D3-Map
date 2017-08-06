@@ -31,6 +31,7 @@ drawMapModule.controller('DrawMapController', [
             }).attr('class', cssClass);
         };
 
+        // sets projection related params and draw map after GeoJSON data loads
         this.ready = function(error, neighborhoods, freeways) {
 
             this.setProjectionParams(neighborhoods);
