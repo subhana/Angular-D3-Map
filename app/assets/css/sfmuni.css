@@ -2,6 +2,11 @@ body {
     background-color: #C6E2FF;
 }
 
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
 .neighborhood {
     fill: #EBEBEB;
     stroke: #C9C9C9;
