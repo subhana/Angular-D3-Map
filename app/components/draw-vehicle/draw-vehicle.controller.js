@@ -1,13 +1,13 @@
 'use strict';
 
 drawVehicleModule.controller('DrawVehicleController', [
-    '$scope', '$interval', 'RouteService','VehicleService', '$timeout',
-    function drawVehicleController($scope, $interval, RouteService, VehicleService, $timeout) {
+    '$scope', '$interval', 'SfmuniService',
+    function drawVehicleController($scope, $interval, SfmuniService) {
 
         var circles;
 
         // fetch route list of sfmuni agency
-        RouteService.get().then(function(data) {
+        SfmuniService.getRoutes().then(function(data) {
             $scope.routes = data.route;
         });
 
@@ -28,7 +28,7 @@ drawVehicleModule.controller('DrawVehicleController', [
 
             if(!this.selectedRoute) return;
 
-            VehicleService.get(this.selectedRoute.tag).then(function(data) {
+            SfmuniService.getVehicles(this.selectedRoute.tag).then(function(data) {
                 this.setVehicleData(data);
                 this.drawVehicleLocations();
             }.bind(this));
