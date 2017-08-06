@@ -1,0 +1,54 @@
+$neighborhood-fill-color: #EBEBEB;
+$neighborhood-stroke-color: #C9C9C9;
+
+$freeway-stroke-color: #f49d32;
+
+$vehicle-fill-color: red;
+$vehicle-stroke-color: #545454;
+
+body {
+    background-color: #C6E2FF;
+}
+
+.header {
+    width: 30%;
+    margin: 0 auto;
+    color: #2e6da4;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+@mixin neighborhood-fill() {
+    fill: $neighborhood-fill-color;
+}
+
+.neighborhood {
+    @include neighborhood-fill;
+    stroke: $neighborhood-stroke-color;
+}
+
+.neighborhood-legend {
+    @include neighborhood-fill;
+}
+
+.freeway {
+    fill: 'none';
+    stroke: $freeway-stroke-color;
+}
+
+.freeway-legend {
+    fill: $freeway-stroke-color;
+}
+
+.vehicle {
+    fill: $vehicle-fill-color;
+    stroke: $vehicle-stroke-color;
+    fill-opacity: 0.5;
+}
+
+.no-vehicle {
+    color: red;
+}

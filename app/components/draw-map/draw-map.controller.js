@@ -74,7 +74,9 @@ drawMapModule.controller('DrawMapController', [
             g.append("rect")
                 .attr("width", 45)
                 .attr("height", 12)
-                .style("fill", "red");
+                .attr("class", function(d) {
+                    return d.text.toLowerCase() + '-legend';
+                });
 
             g.append("text")
                 .style("fill", "black")
