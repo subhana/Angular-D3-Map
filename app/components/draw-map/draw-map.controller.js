@@ -69,7 +69,6 @@
                 .data(legendData)
                 .enter()
                 .append("g")
-                .attr("class","someClass")
                 .attr("transform", function(d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
