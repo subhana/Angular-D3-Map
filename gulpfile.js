@@ -11,11 +11,10 @@ var mainBowerFiles = require('main-bower-files');
 var ngAnnotate = require('gulp-ng-annotate');
 var replace = require('gulp-replace');
 var rev = require('gulp-rev');
+var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var sass = require('gulp-sass');
 
-const zip = require('gulp-zip');
 
 var paths = {
     scripts: ['app/app.js','app/**/*.module.js', 'app/**/*.js'],
@@ -25,24 +24,8 @@ var paths = {
     map_data: 'app/assets/map-data/*'
 };
 
-var prodPaths = {
-    scripts: ['dist/**/*.js'],
-    templates: ['dist/templates/*.html', 'dist/index.html']
-}
-
-gulp.task('css', ['clean-css'], function() {
-    return gulp.src(paths.scss)
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(concat('sfmuni.css'))
-        .pipe(cleanCSS())
-        .pipe(sourcemaps.write())
-        .pipe(rev())
-        .pipe(gulp.dest('dist/css'));
-});
-
 gulp.task('clean', function() {
-    return del(['zip','dist']);
+    return del(['dist']);
 });
 
 gulp.task('scripts', function() {
@@ -102,6 +85,17 @@ gulp.task('clean-css', function () {
     return del(cleanCssFiles);
 });
 
+gulp.task('css', ['clean-css'], function() {
+    return gulp.src(paths.scss)
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(concat('sfmuni.css'))
+        .pipe(cleanCSS())
+        .pipe(sourcemaps.write())
+        .pipe(rev())
+        .pipe(gulp.dest('dist/css'));
+});
+
 // Inject css and js files into index.html when css changes
 gulp.task('inject-css', ['css'], function () {
     return gulp.src(paths.index)
@@ -126,19 +120,20 @@ gulp.task('templates',function() {
         .pipe(connect.reload());
 });
 
-// Copy all .json file for drawing the map of San Francisco
+// Copy all JSON files
 gulp.task('map-data',function() {
     return gulp.src(paths.map_data)
-        .pipe(gulp.dest('dist/map_data'));
+        .pipe(gulp.dest('dist/map_data'))
+        .pipe(connect.reload());
 });
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['inject-js-debug']);
-    gulp.watch(paths.images, ['images']);
     gulp.watch(paths.templates, ['templates']);
     gulp.watch(paths.index, ['index']);
     gulp.watch(paths.css, ['inject-css']);
+    gulp.watch(paths.map_data, ['map-data']);
 });
 
 // Start local server at port 8004
@@ -150,11 +145,6 @@ gulp.task('server', function() {
     });
 });
 
-gulp.task('zip', ['index', 'templates', 'inject-js', 'inject-css', 'images'], () =>
-    gulp.src('dist/**')
-        .pipe(zip('archive.zip'))
-        .pipe(gulp.dest('zip'))
-);
 
 gulp.task('default', ['watch', 'index', 'templates', 'map-data', 'inject-css', 'inject-js-debug', 'server']);
-gulp.task('deploy', ['index', 'templates', 'map-data', 'inject-js', 'inject-css', 'images', 'zip']);
+gulp.task('deploy', ['index', 'templates', 'map-data', 'inject-js', 'inject-css']);
