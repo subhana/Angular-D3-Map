@@ -1,8 +1,11 @@
+# San Francisco Municipal Agency Vehicles Map UI
+## Setup Guide
+
 1. Install NodeJS
 
 2. Navigate to the project inside the project folder (currently `sf-muni-app/`)
 
-Dev Environment
+### Dev Environment
 
 1. `npm start`
 	* This will install all of the project dependencies, using npm and bower
@@ -18,7 +21,7 @@ Dev Environment
 
 3. Open browser and type in `http://localhost:8004/#!/sfmuni` to run the app locally
 
-Production Environment
+### Production Environment
 
 1. `npm run build`
-    * Installs all the bower and npm packages and then creates `dist/` folder
+    * Installs all the bower and npm packages and then creates `dist` folder
