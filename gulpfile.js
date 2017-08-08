@@ -5,7 +5,6 @@ var del = require('del');
 var flatten = require('gulp-flatten');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var imagemin = require('gulp-imagemin');
 var inject = require('gulp-inject');
 var mainBowerFiles = require('main-bower-files');
 var ngAnnotate = require('gulp-ng-annotate');
