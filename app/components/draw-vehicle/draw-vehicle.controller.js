@@ -7,16 +7,15 @@
 
             var circles;
 
-            // fetch route list of sfmuni agency
+            // fetch route list of sfmta agency
             SfmuniService.getRoutes().then(function(data) {
-                $scope.routes = data.route;
+                $scope.routes = data;
             });
 
             // set vehicle and other related data
             this.setVehicleData = function(data) {
-
-                if (data.vehicle) {
-                    this.vehicles = angular.isArray(data.vehicle) ? data.vehicle : [data.vehicle];
+                if (angular.isArray(data)) {
+                    this.vehicles = data;
                     this.noVehicle = false;
                 } else {
                     this.vehicles = [];
@@ -26,10 +25,9 @@
 
             // fetch the latest vehicle location for a particular route
             this.updateVehicleLocations = function() {
-
                 if(!this.selectedRoute) return;
 
-                SfmuniService.getVehicles(this.selectedRoute.tag).then(function(data) {
+                SfmuniService.getVehicles(this.selectedRoute.id).then(function(data) {
                     this.setVehicleData(data);
                     this.drawVehicleLocations();
                 }.bind(this));
@@ -50,8 +48,8 @@
                 .attr('class', 'vehicle');
             };
 
-            // update vehicle location every 15 seconds
-            var updateVehicleLoc = $interval(this.updateVehicleLocations.bind(this), 15000);
+            // update vehicle location every 5 seconds
+            var updateVehicleLoc = $interval(this.updateVehicleLocations.bind(this), 5000);
 
             $scope.$on('$destroy', function() {
                 $interval.cancel(updateVehicleLoc);
