@@ -8,22 +8,13 @@
 		{
 			getRoutes: {
 				method: 'GET',
-				isArray: false,
-				url: 'http://webservices.nextbus.com/service/publicJSONFeed',
-				params: {
-					command: 'routeList',
-					a: 'sf-muni'
-				}
+				isArray: true,
+				url: 'https://webservices.umoiq.com/api/pub/v1/agencies/sfmta-cis/routes?key=0be8ebd0284ce712a63f29dcaf7798c4',
 			},
 			getVehicles: {
 				method: 'GET',
-				isArray: false,
-				url: 'http://webservices.nextbus.com/service/publicJSONFeed?r=:routeTag',
-				params: {
-					command: 'vehicleLocations',
-					a: 'sf-muni',
-					t: 0
-				}
+				isArray: true,
+				url: `https://webservices.umoiq.com/api/pub/v1/agencies/sfmta-cis/routes/:routeId/vehicles?key=0be8ebd0284ce712a63f29dcaf7798c4`,
 			}
 		}
 	);
@@ -32,8 +23,8 @@
 		return sfmuniResource.getRoutes().$promise;
 	};
 
-	this.getVehicles = function(routeTag) {
-		return sfmuniResource.getVehicles({routeTag: routeTag}).$promise;
+	this.getVehicles = function(routeId) {
+		return sfmuniResource.getVehicles({routeId: routeId}).$promise;
 	};
 });
 })();
