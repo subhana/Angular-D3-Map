@@ -3,7 +3,7 @@
 
     <br>
     <select name="route"
-            ng-options="route.title for route in routes track by route.tag"
+            ng-options="route.title for route in routes track by route.id"
             ng-model="vehicleCtrl.selectedRoute"
             ng-change="vehicleCtrl.updateVehicleLocations()"></select>
 
