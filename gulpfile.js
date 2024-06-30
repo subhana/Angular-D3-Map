@@ -10,7 +10,7 @@ var mainBowerFiles = require('main-bower-files');
 var ngAnnotate = require('gulp-ng-annotate');
 var replace = require('gulp-replace');
 var rev = require('gulp-rev');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
