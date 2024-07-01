@@ -14,12 +14,12 @@
 			getRouteVehicles: {
 				method: 'GET',
 				isArray: true,
-				url: `https://webservices.umoiq.com/api/pub/v1/agencies/sfmta-cis/routes/:routeId/vehicles?key=0be8ebd0284ce712a63f29dcaf7798c4`,
+				url: 'https://webservices.umoiq.com/api/pub/v1/agencies/sfmta-cis/routes/:routeId/vehicles?key=0be8ebd0284ce712a63f29dcaf7798c4',
 			},
 			getRouteStops: {
 				method: 'GET',
 				isArray: true,
-				url: `https://webservices.umoiq.com/api/pub/v1/agencies/sfmta-cis/routes/:routeId/stops?key=0be8ebd0284ce712a63f29dcaf7798c4`,
+				url: 'https://webservices.umoiq.com/api/pub/v1/agencies/sfmta-cis/routes/:routeId/stops?key=0be8ebd0284ce712a63f29dcaf7798c4',
 			}
 		}
 	);
