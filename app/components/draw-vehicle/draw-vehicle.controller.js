@@ -14,25 +14,27 @@
 
             // set vehicle and other related data
             this.setVehicleData = function(data) {
-                if (angular.isArray(data)) {
-                    this.vehicles = data;
-                    this.noVehicle = false;
-                } else {
+                if (!Array.isArray(data) || !data.length) {
                     this.vehicles = [];
                     this.noVehicle = true;
                 }
+                else {
+                    this.vehicles = data;
+                    this.noVehicle = false;
+                } 
             };
 
             // fetch the latest vehicle location for a particular route
             this.updateVehicleLocations = function() {
                 if(!this.selectedRoute) return;
 
-                SfmuniService.getVehicles(this.selectedRoute.id).then(function(data) {
+                console.log("selected route", this.selectedRoute);
+
+                SfmuniService.getRouteVehicles(this.selectedRoute.id).then(function(data) {
                     this.setVehicleData(data);
                     this.drawVehicleLocations();
                 }.bind(this));
             }.bind(this);
-
 
             // draw vehicles locations
             this.drawVehicleLocations = function() {

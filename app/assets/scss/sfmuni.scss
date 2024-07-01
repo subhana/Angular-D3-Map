@@ -6,6 +6,9 @@ $freeway-stroke-color: #f49d32;
 $vehicle-fill-color: red;
 $vehicle-stroke-color: #545454;
 
+$stop-fill-color: blue;
+$stop-stroke-color: #545454;
+
 body {
     background-color: #C6E2FF;
 }
@@ -41,6 +44,12 @@ svg {
 
 .freeway-legend {
     fill: $freeway-stroke-color;
+}
+
+.vehicle-legend {
+    fill: $vehicle-fill-color;
+    stroke: $vehicle-stroke-color;
+    fill-opacity: 0.5;
 }
 
 .vehicle {

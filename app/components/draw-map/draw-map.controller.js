@@ -62,6 +62,11 @@
                         x: width - 600,
                         y: 90,
                         text: 'Freeway'
+                    },
+                    {
+                        x: width - 600,
+                        y: 140,
+                        text: 'Vehicle'
                     }
                 ];
 
