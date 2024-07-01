@@ -10,7 +10,7 @@
 1. Run `npm start`
 	* This will install all of the project dependencies, using npm and bower
 
-2. Run `npm run gulp`
+2. Run `npm run dev`
 	*  This will prepare the `dist` folder.
     * `dist/` contains single compiled css file which is minified, cleaned and revisioned
     * `dist/` contains single js file, which is revisioned
