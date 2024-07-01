@@ -3,14 +3,14 @@
 
 1. Install NodeJS
 
-2. Navigate to the project inside the project folder (currently `sf-muni-app/`)
+2. Navigate to the project inside the project folder
 
 ### Dev Environment
 
-1. `npm start`
+1. Run `npm start`
 	* This will install all of the project dependencies, using npm and bower
 
-2. `gulp`
+2. Run `npm run gulp`
 	*  This will prepare the `dist` folder.
     * `dist/` contains single compiled css file which is minified, cleaned and revisioned
     * `dist/` contains single js file, which is revisioned
@@ -23,5 +23,5 @@
 
 ### Production Environment
 
-1. `npm run build`
+1. Run `npm run build`
     * Installs all the bower and npm packages and then creates `dist` folder
